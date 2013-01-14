@@ -1,0 +1,20 @@
+{
+    "name": "todo",
+    "preferGlobal": "false",
+    "version": "0.0.1",
+    "author": "Huang Liang<exceedhl@gmail.com>",
+    "description": "form with backbone and lcoalstorage",
+    "dependencies" : {
+	"jquery" : "*",
+	"requirejs" : "*",
+	"backbone" : "*",
+	"underscore" : "*"
+    },
+    "devDependencies": {
+	"chai" : "*",
+	"amdefine" : "*",
+	"mocha" : "*",
+	"brunch" : "*",
+	"swank-js" : "*"
+    }
+}
