@@ -6,27 +6,28 @@ body,html{
   width: 2em;
 }
 
-.new-task-form .control-label {
+#new-task {
+  min-height: 0;
+}
+
+#new-task .control-label {
   width: 8em;
 }
 
-.new-task-form .controls {
+#new-task .controls {
   margin-left: 10em;
 }
 
-.new-task-form legend {
+#new-task legend {
   padding-left: 1em;
 }
 
-.new-task-form {
-  display: none;
+#add-task {
+  margin: 5px;
 }
 
-.task-list {
-  margin-left: 0px;
-  height: 100%;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+#new-task-form {
+  display:none;
 }
 
 #edit-task {

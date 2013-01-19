@@ -14,113 +14,27 @@
       <div class="navbar-inner">
 	<a class="brand">Todo</a>
 	<ul class="nav pull-right">
-	  <button class="btn btn-small btn-primary"
-		  type="button"><i class="icon-plus icon-white"></i> new task</button>
+	  <button class="btn btn-small btn-primary" id="add-task"
+		  type="button"><i class="icon-plus icon-white"></i>
+	    new task</button>
 	</ul>
       </div>
     </div>
     
     <div class="container-fluid" style="padding: 0; height: 100%">
       <div class="row-fluid" style="height: 100%">
-	<div class="span2" style="padding: 8px 0;">
+	<div class="span2" style="padding: 8px 0; height: 100%;
+				  border-right: 1px solid #ccc">
 	  <ul class="nav nav-list">
 	    <li class="nav-header">Header</li>
 	    <li class=""><a href="#">Tasks</a></li>
 	  </ul>
 	</div>
-	<div class="span10 task-list">
-	  <div class="form-horizontal new-task-form">
-	    <form>
-	      <fieldset>
-		<legend>New Task</legend>
-		<div class="control-group">
-		  <label class="control-label">Name</label>
-		  <div class="controls">
-		    <input type="text" class="input-xxlarge" placeholder="type your task name...">
-		  </div>
-		</div>
-		<div class="control-group">
-		  <label class="control-label">Description</label>
-		  <div class="controls">
-		    <textarea rows="3" class="input-xxlarge"></textarea>
-		  </div>
-		</div>
-		<div class="control-group">
-		  <div class="controls">
-		    <button type="submit" class="btn btn-small">Submit</button>
-		    <a href="#">Cancel</a>
-		  </div>
-		</div>
-	      </fieldset>
-	    </form>
-	  </div>
-	  <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Task</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="todo-check"> 
-		  <label class="checkbox">
-		    <input type="checkbox">
-		  </label>
-		</td>
-                <td>Buy milks</td>
-              </tr>
-              <tr>
-                <td>
-		  <label class="checkbox">
-		    <input type="checkbox">
-		  </label>
-		</td>
-		<td>Finish that project before tomorrow</td>
-	      </tr>
-	      <tr>
-		<td>
-		  <label class="checkbox">
-		    <input type="checkbox">
-		  </label>
-		</td>
-		<td>...</td>
-	      </tr>
-	    </tbody>
-	  </table>
+	<div class="form-horizontal span10" id="new-task">
+	</div>
+	<div class="span10" id="tasks">
 	</div>
 	<div class="span4" id="edit-task">
-	  <form>
-	    <fieldset>
-	      <legend>Buy milks</legend>
-	      <label class="control-label">Description</label>
-	      <div class="controls">
-		<textarea rows="3" class="input-xlarge"></textarea>
-	      </div>
-	      <label class="control-label" for="inputIcon">Owner</label>
-	      <div class="controls">
-		<div class="input-prepend">
-		  <span class="add-on"><i class="icon-envelope"></i></span>
-		  <input class="input-large" id="inputIcon"
-			 type="text" placeHolder="someone@example.com">
-		</div>
-	      </div>
-	      <label class="control-label" for="inputDueDate">Due Date</label>
-	      <div class="controls">
-		<div class="input-prepend">
-		  <span class="add-on"><i class="icon-calendar"></i></span>
-		  <input type="text" id="inputDueDate" class="input-large"
-			 placeholder="Due Date">
-		</div>
-	      </div>
-	      <h5><i class="icon-pencil"></i> Edit Histories</h5>
-	      <p>exceedhl created this task 6 hours ago.</p>
-	      <div class="controls">
-		<button type="submit" class="btn btn-small">Submit</button>
-		<a href="#">Cancel</a>
-	      </div>
-	    </fieldset>
-	  </form>
 	</div>
       </div>
     </div>

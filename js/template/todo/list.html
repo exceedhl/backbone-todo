@@ -1,0 +1,19 @@
+<thead>
+  <tr>
+    <th class="todo-check">#</th>
+    <th>Task</th>
+  </tr>
+</thead>
+<tbody>
+  <% _.each(todos, function(todo) { %>
+  <tr>
+    <td class="todo-check"> 
+      <label class="checkbox">
+	<input type="checkbox">
+      </label>
+    </td>
+    <td><a href="#tasks/<%= todo.cid %>"><%= todo.get("name") %></a></td>
+  </tr>
+  <% }); %>
+</tbody>
+

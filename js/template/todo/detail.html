@@ -1,0 +1,29 @@
+<fieldset>
+  <legend><%= todo.get("name") %></legend>
+  <label class="control-label">Description</label>
+  <div class="controls">
+    <textarea rows="3" class="input-xlarge"><%= todo.get("desc") %></textarea>
+  </div>
+  <label class="control-label" for="inputIcon">Owner</label>
+  <div class="controls">
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <input class="input-large" id="inputIcon"
+	     type="text" placeHolder="someone@example.com">
+    </div>
+  </div>
+  <label class="control-label" for="inputDueDate">Due Date</label>
+  <div class="controls">
+    <div class="input-prepend">
+      <span class="add-on"><i class="icon-calendar"></i></span>
+      <input type="text" id="inputDueDate" class="input-large"
+	     placeholder="Due Date">
+    </div>
+  </div>
+  <h5><i class="icon-pencil"></i> Edit Histories</h5>
+  <p>exceedhl created this task 6 hours ago.</p>
+  <div class="controls">
+    <button type="submit" class="btn btn-small">Submit</button>
+    <a href="#">Cancel</a>
+  </div>
+</fieldset>

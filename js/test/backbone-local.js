@@ -8,7 +8,7 @@ define(["test/local", "backbone", "underscore"], function(Store, Backbone, _) {
 	var result;
 
         switch (method) {
-            case "read":    resp = model.id ? store.find(model) : store.findAll(); break;
+            case "read":    resp = model.id ? store.find(model).attributes : store.findAll(); break;
             case "create":  resp = store.create(model);                            break;
             case "update":  resp = store.update(model);                            break;
             case "delete":  resp = store.destroy(model);                           break;
