@@ -3,7 +3,13 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 	defaults: {
 	    "name" : "",
 	    "desc" : "",
-	    "done" : false
+	    "done" : false,
+	    "owner" : "",
+	    "dueDate" : ""
+	},
+
+	toggleDone: function() {
+	    this.set("done", !this.get("done"));
 	}
     });
     return Todo;

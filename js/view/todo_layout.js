@@ -1,4 +1,4 @@
-define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/todo/list'], function(_, Backbone, TodoList, NewTodoView, ListTodoView) {
+define(['underscore', 'backbone', 'model/todo_list', "view/todo/new"], function(_, Backbone, TodoList, NewTodoView) {
     var TodoLayout = Backbone.View.extend({
 	
 	el: $("body"),
@@ -7,26 +7,22 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/todo
 	},
 	
 	showForm: function() {
-	    this.newView = new NewTodoView({todoList: this.options.todoList});
-	    this.$('#new-task').html(this.newView.render().el).hide().slideDown();
+	    var newView = new NewTodoView({todoList: this.options.todoList});
+	    newView.afterShow(function() {
+		this.container.hide().slideDown();
+	    }).beforeClose(function() {
+		this.container.slideUp();
+	    });
+	    newView.render().show();
 	},
 	
-	addView: function(selector, view) {
-	    if (this.subViews[selector]) {
-		this.subViews[selector].close();
-	    }
-	    this.subViews[selector] = view;
+	addSubView: function(view) {
+	    this.subViews.push(view);
 	    return this;
 	},
 
-	getView: function(selector) {
-	    return this.subViews[selector];
-	},
-	
 	initialize: function() {
-	    this.subViews = {
-		'#tasks': new ListTodoView({todoList: this.options.todoList})
-	    };
+	    this.subViews = [];
 	    this.afterShowHooks = [];
 	    this.afterCloseHooks = [];
 	},
@@ -44,9 +40,8 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/todo
 	},
 
 	show: function() {
-	    var that = this;
-	    _.each(this.subViews, function(view, selector) {
-		this.$(selector).html(view.el);
+	    _.each(this.subViews, function(view) {
+		view.show();
 	    });
 	    _.each(this.afterShowHooks, function(fn) {
 		fn.call(this);
@@ -63,6 +58,8 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/todo
 	    _.each(this.subViews, function(view) {
 		view.close();
 	    });
+	    this.subViews = null;
+
 	    this.undelegateEvents();
 	    this.off();
 	    _.each(this.afterCloseHooks, function(fn) {

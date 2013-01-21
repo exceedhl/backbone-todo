@@ -1,0 +1,6 @@
+<td class="todo-check"> 
+  <label class="checkbox">
+    <input type="checkbox" <%if (todo.get("done")) {%>checked<%}%>>
+  </label>
+</td>
+<td><a href="#task/<%= todo.cid %>"><%= todo.get("name") %></a></td>

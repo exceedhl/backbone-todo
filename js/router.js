@@ -4,9 +4,9 @@ define(["underscore", "backbone", 'model/todo_list', "view/todo_layout", 'view/t
 
     var AppRouter = Backbone.Router.extend({
 	routes : {
-	    "" : "listTasks",
-	    "tasks" : "listTasks",
-	    "tasks/:id" : "showTaskDetail"
+	    // "" : "listTasks",
+	    "task" : "listTasks",
+	    "task/:id" : "showTaskDetail"
 	},
 
 	listTasks: function() {
