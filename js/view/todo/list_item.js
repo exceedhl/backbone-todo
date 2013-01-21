@@ -1,5 +1,5 @@
-define(['underscore', 'backbone', 'text!template/todo/list_item.html'], function(_, Backbone, listTodoItemTemplate) {
-    var ListTodoItemView = Backbone.View.extend({
+define(['underscore', 'backbone', 'view/view', 'text!template/todo/list_item.html'], function(_, Backbone, View, listTodoItemTemplate) {
+    var ListTodoItemView = View.extend({
 	tagName: "tr",
 
 	events: {
@@ -11,6 +11,7 @@ define(['underscore', 'backbone', 'text!template/todo/list_item.html'], function
 	},
 	
 	initialize: function(){
+	    this.callSuper('initialize');
             this.todo = this.options.todo;
 	},
 	
@@ -18,15 +19,8 @@ define(['underscore', 'backbone', 'text!template/todo/list_item.html'], function
 	    var compiledTemplate = _.template(listTodoItemTemplate, {todo:this.todo});
 	    this.$el.html(compiledTemplate); 
             return this;
-	},
-
-	close: function() {
-	    this.off();
-	    this.undelegateEvents();
-	    this.remove();
 	}
 
-	
     });
 
     return ListTodoItemView;

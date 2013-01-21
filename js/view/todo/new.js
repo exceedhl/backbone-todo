@@ -1,5 +1,5 @@
-define(['underscore', 'backbone', 'text!template/todo/new.html'], function(_, Backbone, newTodoTemplate) {
-    var NewTodoView = Backbone.View.extend({
+define(['underscore', 'backbone', 'view/view', 'text!template/todo/new.html'], function(_, Backbone, View, newTodoTemplate) {
+    var NewTodoView = View.extend({
 	tagName: "form",
 	id: "#new-task-form",
 	container: $('#new-task'),
@@ -10,17 +10,13 @@ define(['underscore', 'backbone', 'text!template/todo/new.html'], function(_, Ba
 	},
 
 	initialize: function() {
+	    this.callSuper('initialize');
 	    this.todos = this.options.todoList;
-	    this.afterShowHooks = [];
-	    this.beforeCloseHooks = [];
 	},
 
 	show: function() {
+	    this.callSuper('show');
 	    this.container.html(this.el);
-	    var that = this;
-	    _.each(this.afterShowHooks, function(fn) {
-		fn.call(that);
-	    });
 	},
 
 	createTodo: function() {
@@ -37,30 +33,7 @@ define(['underscore', 'backbone', 'text!template/todo/new.html'], function(_, Ba
 	    var compiledTemplate = _.template(newTodoTemplate);
 	    this.$el.html(compiledTemplate);
             return this;
-	},
-
-	close: function() {
-	    var that = this;
-	    _.each(this.beforeCloseHooks, function(fn) {
-		fn.call(that);
-	    });
-	    this.el = null;
-	    this.off();
-	    this.undelegateEvents();
-	    this.remove();
-	    this.container = null;
-	},
-
-	afterShow: function(fn) {
-	    this.afterShowHooks.push(fn);
-	    return this;
-	},
-
-	beforeClose: function(fn) {
-	    this.beforeCloseHooks.push(fn);
-	    return this;
 	}
-	
     });
 
     return NewTodoView;

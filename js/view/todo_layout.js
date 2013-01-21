@@ -1,5 +1,5 @@
-define(['underscore', 'backbone', 'model/todo_list', "view/todo/new"], function(_, Backbone, TodoList, NewTodoView) {
-    var TodoLayout = Backbone.View.extend({
+define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/view'], function(_, Backbone, TodoList, NewTodoView, View) {
+    var TodoLayout = View.extend({
 	
 	el: $("body"),
 	events: {
@@ -16,17 +16,6 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new"], function(
 	    newView.render().show();
 	},
 	
-	addSubView: function(view) {
-	    this.subViews.push(view);
-	    return this;
-	},
-
-	initialize: function() {
-	    this.subViews = [];
-	    this.afterShowHooks = [];
-	    this.afterCloseHooks = [];
-	},
-	
 	render: function() {
 	    _.each(this.subViews, function(view) {
 		view.render();
@@ -34,37 +23,11 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new"], function(
 	    return this;
 	},
 	
-	afterShow: function(fn) {
-	    this.afterShowHooks.push(fn);
-	    return this;
-	},
-
-	show: function() {
-	    _.each(this.subViews, function(view) {
-		view.show();
-	    });
-	    _.each(this.afterShowHooks, function(fn) {
-		fn.call(this);
-	    });
-	    return this;
-	},
-
-	afterClose: function(fn) {
-	    this.afterCloseHooks.push(fn);
-	    return this;
-	},
-
 	close: function() {
-	    _.each(this.subViews, function(view) {
-		view.close();
-	    });
-	    this.subViews = null;
-
+	    this.closeSubViews();
 	    this.undelegateEvents();
 	    this.off();
-	    _.each(this.afterCloseHooks, function(fn) {
-		fn.call(this);
-	    });
+	    this.subViews = null;
 	}
     });
 
