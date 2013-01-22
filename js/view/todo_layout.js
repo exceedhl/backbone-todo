@@ -8,10 +8,11 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/view
 	
 	showForm: function() {
 	    var newView = new NewTodoView({todoList: this.options.todoList});
+	    this.addSubView(newView);
 	    newView.afterShow(function() {
-		this.container.hide().slideDown();
+		this.$container.hide().slideDown();
 	    }).beforeClose(function() {
-		this.container.slideUp();
+		this.$container.slideUp();
 	    });
 	    newView.render().show();
 	},
@@ -24,10 +25,7 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/view
 	},
 	
 	close: function() {
-	    this.closeSubViews();
-	    this.undelegateEvents();
-	    this.off();
-	    this.subViews = null;
+	    // don't remove
 	}
     });
 

@@ -33,3 +33,7 @@ body,html{
 #edit-task {
   display: none;
 }
+
+.input-prepend .parsley-error-list {
+  font-size: 12px;
+}

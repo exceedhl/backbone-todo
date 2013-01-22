@@ -9,6 +9,18 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 	    this.beforeCloseHooks = [];
 	    this.wrap('close');
 	    this.wrap('show');
+	    this.beforeClose(function() {
+		this.closeSubViews();
+		this.off();
+		this.undelegateEvents();
+	    });
+	    this.afterClose(function() {
+		this.subViews = null;
+		this.afterShowHooks = null;
+		this.afterCloseHooks = null;
+		this.beforeShowHooks = null;
+		this.beforeCloseHooks = null;
+	    });
 	},
 
 	wrap: function(method) {
@@ -69,13 +81,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 	},
 
 	close: function() {
-	    this.closeSubViews();
-
-	    this.off();
-	    this.undelegateEvents();
 	    this.remove();
-
-	    this.subViews = null;
 	},
 
 	callSuper: function(method) {

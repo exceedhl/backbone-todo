@@ -2,7 +2,7 @@ define(['underscore', 'backbone', 'view/view', 'text!template/todo/new.html'], f
     var NewTodoView = View.extend({
 	tagName: "form",
 	id: "#new-task-form",
-	container: $('#new-task'),
+	$container: $('#new-task'),
 	
 	events: {
 	    'click #submit-task' : 'createTodo',
@@ -16,16 +16,19 @@ define(['underscore', 'backbone', 'view/view', 'text!template/todo/new.html'], f
 
 	show: function() {
 	    this.callSuper('show');
-	    this.container.html(this.el);
+	    this.$container.html(this.el);
+	    this.$el.parsley();
 	},
 
 	createTodo: function() {
-	    // extract out this?
-	    var name = this.$("input[name='name']").val();
-	    var desc = this.$("textarea[name='desc']").val();
-	    // validation?
-	    this.todos.create({name: name, desc: desc});
-	    this.close();
+	    if (this.$el.parsley('validate')) {
+		// extract out this?
+		var name = this.$("input[name='name']").val();
+		var desc = this.$("textarea[name='desc']").val();
+		// validation?
+		this.todos.create({name: name, desc: desc});
+		this.close();
+	    }
 	    return false;
 	},
 

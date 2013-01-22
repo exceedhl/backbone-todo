@@ -2,7 +2,7 @@ define(['underscore', 'backbone', 'view/todo/list_item', 'view/view', 'text!temp
     var ListTodoView = View.extend({
 	tagName: "table",
 	className: "table table-hover",
-	container: $('#tasks'),
+	$container: $('#tasks'),
 	
 	initialize: function(){
 	    this.callSuper('initialize');
@@ -29,7 +29,7 @@ define(['underscore', 'backbone', 'view/todo/list_item', 'view/view', 'text!temp
 
 	show: function() {
 	    this.callSuper('show');
-	    this.container.html(this.el);
+	    this.$container.html(this.el);
 	},
 
 	close: function() {

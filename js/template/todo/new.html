@@ -3,7 +3,9 @@
   <div class="control-group">
     <label class="control-label">Name</label>
     <div class="controls">
-      <input type="text" name="name" class="input-xxlarge" placeholder="type your task name...">
+      <input type="text" name="name" class="input-xxlarge parsley-validated"
+	     placeholder="type your task name..." data-notblank="true" data-required="true"
+	     data-trigger="change">
     </div>
   </div>
   <div class="control-group">

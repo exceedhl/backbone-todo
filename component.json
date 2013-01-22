@@ -4,9 +4,10 @@
     "dependencies" : {
 	"jquery" : "*",
 	"requirejs" : "*",
-	"backbone-amd" : "*",
+	"backbone-amd" : "0.9.9",
 	"underscore-amd" : "*",
 	"bootstrap" : "*",
-	"bootstrap.css" : "*"
+	"bootstrap.css" : "*",
+	"parsleyjs" : "*"
     }
 }
