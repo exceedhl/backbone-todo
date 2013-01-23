@@ -1,0 +1,13 @@
+<thead>
+  <tr>
+    <th>Project Name</th>
+  </tr>
+</thead>
+<tbody>
+  <% _.each(projects, function(p) {%>
+  <tr>
+    <td><%= p.get("name") %></td>
+  </tr>
+  <%})%>
+</tbody>
+

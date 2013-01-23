@@ -45,8 +45,8 @@ define(["underscore", "backbone"], function(_, Backbone) {
         },
 
         // Return the array of all models currently in storage.
-        findAll: function() {
-            return _.values(this.data);
+        findAll: function(modelName) {
+            return _.chain(this.data).values().filter(function(e) {return e.modelName === modelName; }).value();
         },
 
         // Delete a model from `this.data`, returning it.

@@ -35,6 +35,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 		_.each(this['after' + capMethod + 'Hooks'], function(fn) {
 		    fn.call(that);
 		});
+		return this;
 	    };
 	},
 

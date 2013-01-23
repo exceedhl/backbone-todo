@@ -21,7 +21,8 @@ require([
     'router',
     'bootstrap',
     'parsley',
-    'test/backbone-local'
+    'test/backbone-local',
+    'test/test-data'
 ], function(Backbone, router) {
     
 });
