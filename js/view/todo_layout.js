@@ -10,9 +10,9 @@ define(['underscore', 'backbone', 'model/todo_list', "view/todo/new", 'view/view
 	    var newView = new NewTodoView({todoList: this.options.todoList});
 	    this.addSubView(newView);
 	    newView.afterShow(function() {
-		this.$container.hide().slideDown();
+		this.$el.hide().slideDown();
 	    }).beforeClose(function() {
-		this.$container.slideUp();
+		this.$el.slideUp();
 	    });
 	    newView.render().show();
 	},

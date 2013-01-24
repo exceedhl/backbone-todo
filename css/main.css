@@ -23,7 +23,8 @@ body,html{
 }
 
 #add-task {
-  margin: 5px;
+  float: right;
+  margin: 7px;
 }
 
 #new-task-form {

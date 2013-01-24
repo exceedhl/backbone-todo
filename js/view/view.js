@@ -20,7 +20,9 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 		this.afterCloseHooks = null;
 		this.beforeShowHooks = null;
 		this.beforeCloseHooks = null;
-	    });
+		this.el = null;
+		this.$el = null;
+	    });	
 	},
 
 	wrap: function(method) {
@@ -45,7 +47,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 	},
 
 	afterClose: function(fn) {
-	    this.afterCloseHooks.push(fn);
+	    this.afterCloseHooks.unshift(fn);
 	    return this;
 	},
 
@@ -76,6 +78,13 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 		view.show();
 	    });
 	},
+	
+	render: function() {
+	    _.each(this.subViews, function(view) {
+		view.render();
+	    });
+	    return this;
+	},
 
 	show: function() {
 	    this.showSubViews();
@@ -83,6 +92,7 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 
 	close: function() {
 	    this.remove();
+	    return this;
 	},
 
 	callSuper: function(method) {

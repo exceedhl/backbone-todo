@@ -12,6 +12,7 @@ TODO:
 * js optimization
 * authentication
 * view caching
+* SEO: modify title, meta etc.
 * tracking
 * AB testing
   

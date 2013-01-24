@@ -1,12 +1,16 @@
 define(['underscore', 'backbone', 'view/view', 'text!template/todo/new.html'], function(_, Backbone, View, newTodoTemplate) {
     var NewTodoView = View.extend({
-	tagName: "form",
-	id: "#new-task-form",
-	$container: $('#new-task'),
+	tagName: "div",
+	$container: $('#container'),
 	
 	events: {
 	    'click #submit-task' : 'createTodo',
-	    'click #new-form-cancel' : 'close'
+	    'click #new-form-cancel' : 'cancel'
+	},
+
+	cancel: function() {
+	    this.close();
+	    return false;
 	},
 
 	initialize: function() {
@@ -14,14 +18,18 @@ define(['underscore', 'backbone', 'view/view', 'text!template/todo/new.html'], f
 	    this.todos = this.options.todoList;
 	},
 
+	form: function() {
+	    return this.$("form");
+	},
+
 	show: function() {
 	    this.callSuper('show');
-	    this.$container.html(this.el);
-	    this.$el.parsley();
+	    this.$container.prepend(this.el);
+	    this.form().parsley();
 	},
 
 	createTodo: function() {
-	    if (this.$el.parsley('validate')) {
+	    if (this.form().parsley('validate')) {
 		// extract out this?
 		var name = this.$("input[name='name']").val();
 		var desc = this.$("textarea[name='desc']").val();

@@ -1,19 +1,11 @@
-define(['underscore', 'backbone', 'model/todo_list', "view/todo_layout", 'view/todo/list'], function(_, Backbone, TodoList, TodoLayout, ListTodoView) {
-    var ListTasksPage = Backbone.View.extend({
+define(['underscore', 'backbone', 'model/todo_list', "view/view", 'view/todo/list'], function(_, Backbone, TodoList, View, ListTodoView) {
+    var ListTasksPage = View.extend({
 	
 	initialize: function() {
-	    this.layout = new TodoLayout({todoList: this.options.todoList});
-	    this.layout.addSubView(new ListTodoView({todoList: this.options.todoList}));
-	},
-	
-	show: function() {
-	    this.layout.render().show();
-	    return this;
-	},
-
-	close: function() {
-	    this.layout.close();
+	    this.callSuper("initialize");
+	    this.addSubView(new ListTodoView({todoList: this.options.todoList}));
 	}
+	
     });
 
     return ListTasksPage;

@@ -21,7 +21,6 @@ function(
 
     var AppRouter = Backbone.Router.extend({
 	routes : {
-	    // "" : "listTasks",
 	    "task" : "listTasks",
 	    "task/:id" : "showTaskDetail",
 	    "project" : "listProjects"
@@ -29,12 +28,12 @@ function(
 
 	listTasks: function() {
 	    this.closeLastPage();
-	    lastPage = new ListTasksPage({todoList: this.todoList}).show();
+	    lastPage = new ListTasksPage({todoList: this.todoList}).render().show();
 	},
 
 	showTaskDetail: function(id) {
 	    this.closeLastPage();
-	    lastPage = new TaskDetailPage({todoList: this.todoList, cid:id}).show();
+	    lastPage = new TaskDetailPage({todoList: this.todoList, cid:id}).render().show();
 	},
 
 	listProjects: function() {

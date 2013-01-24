@@ -1,7 +1,8 @@
 define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!template/todo/detail.html"], function(_, Backbone, require, Todo, View, taskDetailTemplate) {
     var TaskDetailView = View.extend({
-	tagName: "form",
-	$container: $('#edit-task'),
+	tagName: "div",
+	className: "span4",
+	$container: $('#container'),
 
 	events : {
 	    "click button[type='submit']": "submit",
@@ -14,7 +15,7 @@ define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!te
 	},
 
 	submit: function() {
-	    if (this.$el.parsley('validate')) {
+	    if (this.form().parsley('validate')) {
 		console.log("changing todo");
 		var owner = this.$("#inputOwner").val();
 		var desc = this.$("#inputDesc").val();
@@ -40,10 +41,14 @@ define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!te
 	    return this;
 	},
 
+	form: function() {
+	    return this.$("form");
+	},
+
 	show: function() {
 	    this.callSuper('show');
-	    this.$container.html(this.el);
-	    this.$el.parsley();
+	    this.$container.append(this.el);
+	    this.form().parsley();
 	}
     });
 

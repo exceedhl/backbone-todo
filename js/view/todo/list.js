@@ -1,8 +1,22 @@
-define(['underscore', 'backbone', 'view/todo/list_item', 'view/view', 'text!template/todo/list.html'], function(_, Backbone, ListTodoItemView, View, listTodoTemplate) {
+define(['underscore', 'backbone', 'view/todo/list_item', 'view/todo/new', 'view/view', 'text!template/todo/list.html'], function(_, Backbone, ListTodoItemView, NewTodoView, View, listTodoTemplate) {
     var ListTodoView = View.extend({
-	tagName: "table",
-	className: "table table-hover",
-	$container: $('#tasks'),
+	tagName: "div",
+	$container: $('#container'),
+
+	events: {
+	    "click #add-task" : "showForm"
+	},
+
+	showForm: function() {
+	    var newView = new NewTodoView({todoList: this.todos});
+	    newView.afterShow(function() {
+		this.$el.hide().slideDown();
+	    }).beforeClose(function() {
+		this.$el.slideUp();
+	    });
+	    newView.render().show();
+	},
+
 	
 	initialize: function(){
 	    this.callSuper('initialize');
@@ -29,12 +43,14 @@ define(['underscore', 'backbone', 'view/todo/list_item', 'view/view', 'text!temp
 
 	show: function() {
 	    this.callSuper('show');
-	    this.$container.html(this.el);
+	    this.$container.append(this.el);
+	    return this;
 	},
 
 	close: function() {
 	    this.callSuper('close');
 	    this.todos.off("add");
+	    return this;
 	}
 
 	
