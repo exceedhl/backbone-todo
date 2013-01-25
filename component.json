@@ -8,7 +8,6 @@
 	"underscore-amd" : "*",
 	"bootstrap" : "*",
 	"bootstrap.css" : "*",
-	"parsleyjs" : "*",
-	"backbone-associations" : "https://github.com/dhruvaray/backbone-associations.git"
+	"parsleyjs" : "*"
     }
 }
