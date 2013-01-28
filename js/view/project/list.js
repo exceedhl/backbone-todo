@@ -1,7 +1,7 @@
 define(['underscore', 'backbone', 'view/view', 'text!template/project/list.html'], function(_, Backbone, View, listProjectsTemplate) {
     var ListProjectsView = View.extend({
-	tagName: "table",
-	className: "table table-hover",
+	tagName: "div",
+	className: "span12",
 	$container: $('#container'),
 
 	initialize: function() {

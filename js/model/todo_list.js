@@ -3,7 +3,6 @@ define(['underscore', 'backbone', 'model/todo'], function(_, Backbone, Todo) {
 	model: Todo,
 
 	initialize: function() {
-	    console.log("in todo list init");
 	}
 	
     });

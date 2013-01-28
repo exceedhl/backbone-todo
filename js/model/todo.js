@@ -1,5 +1,5 @@
-define(['underscore', 'backbone'], function(_, Backbone) {
-    var Todo = Backbone.Model.extend({
+define(['underscore', 'backbone', 'backbone-relational'], function(_, Backbone) {
+    var Todo = Backbone.RelationalModel.extend({
 	modelName: "todo",
 	
 	defaults: {
@@ -7,7 +7,8 @@ define(['underscore', 'backbone'], function(_, Backbone) {
 	    "desc" : "",
 	    "done" : false,
 	    "owner" : "",
-	    "dueDate" : ""
+	    "dueDate" : "",
+	    "project" : null
 	},
 
 	toggleDone: function() {

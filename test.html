@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="js/lib/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
+  <script type="text/javascript">
+    require.config({
+	paths: {
+	    'mocha': "lib/mocha/mocha",
+	    'chai': "lib/chai/chai"
+	}
+    });
+    
+    require(["require", "mocha"], function(require) {
+	mocha.setup('bdd');
+	mocha.setup({ignoreLeaks: true});
+
+	var runMocha = function() {
+	    mocha.run();
+	};
+	require([
+	    'js/test/project-test.js'
+	], runMocha);
+    });
+  </script>
+</body>
+</html>

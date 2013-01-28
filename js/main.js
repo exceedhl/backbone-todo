@@ -4,11 +4,15 @@ require.config({
 	jquery: 'lib/jquery/jquery',
 	underscore: 'lib/underscore-amd/underscore',
 	backbone: 'lib/backbone-amd/backbone',
+	'backbone-relational': 'lib/backbone-relational/backbone-relational',
 	parsley: 'lib/parsleyjs/parsley'
     },
     shim: {
 	"bootstrap": {
 	    deps: ["jquery"]
+	},
+	"backbone_relational" : {
+	    deps: ["underscore", "backbone"]
 	},
 	"parsley": {
 	    deps: ['jquery']

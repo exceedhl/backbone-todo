@@ -8,6 +8,7 @@
 	"jquery" : "*",
 	"requirejs" : "*",
 	"backbone" : "*",
+	"backbone-relational" : "*",
 	"underscore" : "*"
     },
     "devDependencies": {

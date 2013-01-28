@@ -1,13 +1,13 @@
-<thead>
-  <tr>
-    <th>Project Name</th>
-  </tr>
-</thead>
-<tbody>
-  <% _.each(projects, function(p) {%>
-  <tr>
-    <td><%= p.get("name") %></td>
-  </tr>
-  <%})%>
-</tbody>
+<h4>Projects</h4>
+
+<table class="table table-hover">
+  <tbody>
+    <% _.each(projects, function(p) {%>
+    <tr>
+      <td><a href="#project/<%=p.get("cid")%>"><%= p.get("name") %></a></td>
+    </tr>
+    <%})%>
+  </tbody>
+</table>
+
 

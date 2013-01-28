@@ -1,0 +1,11 @@
+<h4><%=project.get("name")%></h4>
+
+<table class="table table-hover">
+  <tbody>
+    <% _.each(project.get("todos").models, function(todo) {%>
+    <tr>
+      <td><%= todo.get("name") %></a></td>
+    </tr>
+    <%})%>
+  </tbody>
+</table>
