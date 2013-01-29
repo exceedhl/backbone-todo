@@ -6,7 +6,6 @@
 	"requirejs" : "*",
 	"backbone-amd" : "0.9.9",
 	"underscore-amd" : "*",
-	"bootstrap" : "*",
 	"bootstrap.css" : "*",
 	"parsleyjs" : "*"
     }

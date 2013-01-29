@@ -7,7 +7,8 @@ define([
     'view/task_detail_page', 
     'view/list_tasks_page',
     'view/project/list',
-    'view/project/show'
+    'view/project/show',
+    'view/project_task_detail_page'
 ], 
 function(
     _, Backbone, 
@@ -17,7 +18,8 @@ function(
     TaskDetailPage, 
     ListTasksPage,
     ListProjectsView,
-    ShowProjectView
+    ShowProjectView,
+    ProjectTaskDetailPage
 ) {
     var router = null;
     var lastPage;
@@ -27,7 +29,8 @@ function(
 	    "task" : "listTasks",
 	    "task/:id" : "showTaskDetail",
 	    "project" : "listProjects",
-	    "project/:id" : "showProject"
+	    "project/:id" : "showProject",
+	    "project/:id/task/:task_id": "showProjectTaskDetail"
 	},
 
 	listTasks: function() {
@@ -37,7 +40,7 @@ function(
 
 	showTaskDetail: function(id) {
 	    this.closeLastPage();
-	    lastPage = new TaskDetailPage({todoList: this.todoList, cid:id}).render().show();
+	    lastPage = new TaskDetailPage({todoList: this.todoList, todo: this.todoList.get(id)}).render().show();
 	},
 
 	listProjects: function() {
@@ -48,6 +51,11 @@ function(
 	showProject: function(id) {
 	    this.closeLastPage();
 	    lastPage = new ShowProjectView({project: this.projects.get(id)}).render().show();
+	},
+
+	showProjectTaskDetail: function(id, task_id) {
+	    this.closeLastPage();
+	    lastPage = new ProjectTaskDetailPage({project: this.projects.get(id), todo: this.todoList.get(task_id)}).render().show();
 	},
 
 	closeLastPage: function() {

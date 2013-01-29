@@ -4,7 +4,12 @@
   <tbody>
     <% _.each(project.get("todos").models, function(todo) {%>
     <tr>
-      <td><%= todo.get("name") %></a></td>
+      <td class="todo-check"> 
+	<label class="checkbox">
+	  <input type="checkbox" <%if (todo.get("done")) {%>checked<%}%>>
+	</label>
+      </td>
+      <td><a href="#project/<%= project.cid%>/task/<%= todo.cid %>"><%= todo.get("name") %></a></td>
     </tr>
     <%})%>
   </tbody>

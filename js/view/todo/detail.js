@@ -1,6 +1,7 @@
 define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!template/todo/detail.html"], function(_, Backbone, require, Todo, View, taskDetailTemplate) {
     var TaskDetailView = View.extend({
 	tagName: "div",
+	id: "task-detail",
 	className: "span4",
 	$container: $('#container'),
 
@@ -30,8 +31,7 @@ define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!te
 
 	initialize: function() {
 	    this.callSuper('initialize');
-	    this.todoList = this.options.todoList;
-	    this.todo = this.todoList.get(this.options.cid);
+	    this.todo = this.options.todo;
 	    console.log(this.todo);
 	},
 

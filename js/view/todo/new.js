@@ -1,6 +1,7 @@
 define(['underscore', 'backbone', 'view/view', 'text!template/todo/new.html'], function(_, Backbone, View, newTodoTemplate) {
     var NewTodoView = View.extend({
 	tagName: "div",
+	className: "new-todo",
 	$container: $('#container'),
 	
 	events: {

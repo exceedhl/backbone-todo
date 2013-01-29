@@ -10,7 +10,7 @@ define(['underscore', 'backbone', 'model/todo_list', 'view/view', "view/todo/det
 	    }).afterClose(function() {
 		this.$el.removeClass("span8").addClass("span12");
 	    });;
-	    var taskDetailView = new TaskDetailView({todoList: this.options.todoList, cid: this.options.cid});
+	    var taskDetailView = new TaskDetailView({todo: this.options.todo});
 	    taskDetailView.afterShow(function() {
 		this.$el.hide().fadeIn();
 	    });

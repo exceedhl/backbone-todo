@@ -5,6 +5,7 @@ define(['underscore', 'backbone', 'view/view', 'text!template/project/show.html'
 	$container: $('#container'),
 
 	initialize: function() {
+	    this.callSuper('initialize');
 	    this.project = this.options.project;
 	    this.project.fetchRelated("todos");
 	},

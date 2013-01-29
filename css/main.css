@@ -6,29 +6,13 @@ body,html{
   width: 2em;
 }
 
-#new-task {
-  min-height: 0;
-}
-
-#new-task .control-label {
-  width: 8em;
-}
-
-#new-task .controls {
-  margin-left: 10em;
-}
-
-#new-task legend {
+.new-todo {
   padding-left: 1em;
 }
 
 #add-task {
   float: right;
   margin: 7px;
-}
-
-#new-task-form {
-  display:none;
 }
 
 #edit-task {
@@ -38,3 +22,18 @@ body,html{
 .input-prepend .parsley-error-list {
   font-size: 12px;
 }
+
+h4 {
+  padding-left: 0.5em;
+}
+
+#container {
+  height: 100%;
+}
+
+#task-detail {
+  border-left: 1px solid #ccc;
+  padding: 1em;
+  height: 100%; 
+}
+
