@@ -20,7 +20,7 @@ define(["underscore", "backbone"], function(_, Backbone) {
     _.extend(Store.prototype, _.extend({
 
         save: function() {
-	    console.log(this);
+	    // console.log(this);
         },
 
         // Add a model, giving it a (hopefully)-unique GUID, if it doesn't already

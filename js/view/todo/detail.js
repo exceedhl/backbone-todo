@@ -17,14 +17,12 @@ define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!te
 
 	submit: function() {
 	    if (this.form().parsley('validate')) {
-		console.log("changing todo");
 		var owner = this.$("#inputOwner").val();
 		var desc = this.$("#inputDesc").val();
 		var dueDate = this.$("#inputDueDate").val();
 
 		this.todo.set({desc: desc, owner: owner, dueDate: dueDate}).save();
 		this.cancel();
-		console.log(this.todo);
 	    }
 	    return false;
 	},
@@ -32,12 +30,12 @@ define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!te
 	initialize: function() {
 	    this.callSuper('initialize');
 	    this.todo = this.options.todo;
-	    console.log(this.todo);
 	},
 
 	render: function() {
 	    var compiledTemplate = _.template(taskDetailTemplate, {todo: this.todo});
 	    this.$el.html(compiledTemplate);
+	    this.form().parsley();
 	    return this;
 	},
 
@@ -48,7 +46,6 @@ define(['underscore', 'backbone', 'require', 'model/todo', 'view/view', "text!te
 	show: function() {
 	    this.callSuper('show');
 	    this.$container.append(this.el);
-	    this.form().parsley();
 	}
     });
 

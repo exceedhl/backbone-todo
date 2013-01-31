@@ -20,10 +20,14 @@
 	mocha.setup({ignoreLeaks: true});
 
 	var runMocha = function() {
-	    mocha.run();
+	    if (!/Node.js/.test(navigator.appName)) {
+		mocha.run();
+	    }
 	};
 	require([
-	    'js/test/project-test.js'
+	    'js/test/project-test.js',
+	    'js/test/project-list-view-test.js',
+	    'js/test/todo-detail-view-test.js'
 	], runMocha);
     });
   </script>

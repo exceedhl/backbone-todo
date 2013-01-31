@@ -24,9 +24,11 @@ require([
     'backbone',
     'router',
     'bootstrap',
-    'parsley',
-    'test/backbone-local',
-    'test/test-data'
+    'parsley'
 ], function(Backbone, router) {
     
 });
+
+require(['test/backbone-local']);
+
+require(['test/test-data']);
